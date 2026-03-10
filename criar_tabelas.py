@@ -1,3 +1,5 @@
+from binascii import Error
+
 from banco import conectar
 
 def criar_tabela_produtos():
@@ -5,16 +7,21 @@ def criar_tabela_produtos():
   conexao = conectar()
   cursor = conexao.cursor()
 
-  cursor.execute("""
-     CREATE TABLE IF NOT EXISTS produtos (
-                 id INTEGER PRIMARY KEY AUTOINCREMENT,
-                 nome TEXT NOT NULL,
-                 preco REAL NOT NULL,
-                 estoque INTEGER NOT NULL  
-    )                            
-""")
-  
-  conexao.commit()
+  try:  
 
-  cursor.close()
-  conexao.close()
+    cursor.execute("""
+      CREATE TABLE IF NOT EXISTS produtos (
+                  id INTEGER PRIMARY KEY AUTOINCREMENT,
+                  nome TEXT NOT NULL,
+                  preco REAL NOT NULL,
+                  estoque INTEGER NOT NULL  
+      )                            
+    """)
+    print("Tabela 'produtos' criada com sucesso!")
+  except Error as e:
+    print(f"Erro ao criar tabela: {e}")
+  finally: 
+    conexao.commit()
+
+    cursor.close()
+    conexao.close()
