@@ -17,11 +17,10 @@ def criar_tabela_produtos():
                   estoque INTEGER NOT NULL  
       )                            
     """)
+    conexao.commit()
     print("Tabela 'produtos' criada com sucesso!")
   except Error as e:
     print(f"Erro ao criar tabela: {e}")
   finally: 
-    conexao.commit()
-
     cursor.close()
     conexao.close()

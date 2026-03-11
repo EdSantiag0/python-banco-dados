@@ -3,6 +3,6 @@ from produtos import adicionar_produto, atualizar_produto , deletar_produto ,lis
 
 criar_tabela_produtos()
 
-deletar_produto(3)
+adicionar_produto("Carrinho de Policia", 29.99, 6)
 
 listar_produtos()
