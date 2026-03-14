@@ -1,4 +1,4 @@
-from banco import conectar
+from databse.conexao import conectar
 
 # Adicionar Produto
 def adicionar_produto(nome, preco, estoque):
@@ -70,11 +70,11 @@ def listar_produtos():
   cursor = conexao.cursor()
 
   try:
-    cursor.execute(" SELECT * FROM produtos")
+    cursor.execute("SELECT id, nome, preco, estoque FROM produtos")
     produtos = cursor.fetchall()
 
     for produto in produtos:
-        print(produto)
+      print(f"ID: {produto[0]} | Nome: {produto[1]} | Preço: {produto[2]} | Estoque: {produto[3]}")  
 
     return produtos
   

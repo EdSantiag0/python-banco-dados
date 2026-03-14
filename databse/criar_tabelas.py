@@ -1,6 +1,6 @@
 from binascii import Error
 
-from banco import conectar
+from databse.conexao import conectar
 
 def criar_tabela_produtos():
 
