@@ -1,4 +1,4 @@
-from databse.conexao import conectar
+from database.conexao import conectar
 
 # Adicionar Produto
 def adicionar_produto(nome, preco, estoque):
@@ -53,7 +53,7 @@ def deletar_produto(id):
 
     if cursor.rowcount > 0:
         conexao.commit()
-        print("Produto deletado com sucesso!")
+        print("Produto \033[31mdeletado\033[0m com sucesso!")
     else:
         print(f"Produto com ID {id} não encontrado.")
 
